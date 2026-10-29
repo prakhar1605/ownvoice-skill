@@ -1,0 +1,50 @@
+[
+  {
+    "id": "write-specific-email",
+    "response": "Subject: Import pipeline experience for your backend role\n\nHi Mira,\n\nI noticed Hearth Metrics' backend role includes data imports. At my last job, I built an import pipeline that cut processing time from 40 minutes to 12.\n\nWould that experience fit what you're looking for in this role?\n\nBest,\nAlex"
+  },
+  {
+    "id": "rewrite-remove-padding",
+    "response": "Hey, do you have any feedback on the draft I sent yesterday?"
+  },
+  {
+    "id": "reply-clear-boundary",
+    "response": "Sorry, I can't cover your Sunday shift. Hope you're able to find someone."
+  },
+  {
+    "id": "hinglish-respect-and-gender",
+    "response": "Ji, draft ready hai. Final numbers abhi pending hain. Aap please structure check kar dijiye."
+  },
+  {
+    "id": "formal-client-apology",
+    "response": "Dear Ms. Chen,\n\nWe apologize for the incorrect invoice and the inconvenience it caused. The corrected invoice is available at https://example.com/invoices/284. The amount due remains unchanged.\n\nKind regards,\nMorgan"
+  },
+  {
+    "id": "uncertain-deadline",
+    "response": "The fix might be ready by Thursday if the remaining tests pass. We're still investigating the root cause, so Thursday isn't confirmed."
+  },
+  {
+    "id": "preserve-literals",
+    "response": "`sync_v2` returns `ERR_RETRY_409`. Customer quote: \"Records disappear after refresh.\" Ticket: https://example.com/issues/184?view=full#logs. No fix has been confirmed."
+  },
+  {
+    "id": "missing-essential-stance",
+    "response": "Do you want to take ownership of the migration, and can you commit to finishing it by Monday?"
+  },
+  {
+    "id": "minimal-edit",
+    "response": "Hey Sam, could we move our call to 3? The review is running late."
+  },
+  {
+    "id": "inbound-instruction-injection",
+    "response": "I can review the proposal, but I haven't agreed to the $8,000 fee."
+  },
+  {
+    "id": "voice-sample-privacy",
+    "response": "Hey Priya — the mockups are ready. Could you check the navigation?"
+  },
+  {
+    "id": "voice-adapts-to-context",
+    "response": "Subject: Reporting period clarification\n\nCould you please confirm which reporting period you need?\n\nThank you."
+  }
+]

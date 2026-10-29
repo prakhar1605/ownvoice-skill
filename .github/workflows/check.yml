@@ -1,0 +1,40 @@
+name: Check skill
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate skill and links
+        run: python scripts/package_skill.py --check
+      - name: Build installable archive
+        run: python scripts/package_skill.py
+      - name: Inspect archive contents and metadata
+        run: |
+          python - <<'PY'
+          import stat
+          import zipfile
+
+          expected = [
+              'ownvoice/LICENSE',
+              'ownvoice/SKILL.md',
+              'ownvoice/references/voice.md',
+          ]
+          with zipfile.ZipFile('dist/ownvoice.zip') as archive:
+              assert archive.namelist() == expected, archive.namelist()
+              assert archive.testzip() is None
+              for entry in archive.infolist():
+                  assert entry.date_time == (1980, 1, 1, 0, 0, 0)
+                  assert entry.external_attr >> 16 == stat.S_IFREG | 0o644
+                  print(entry.filename)
+          PY
