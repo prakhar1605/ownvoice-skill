@@ -6,6 +6,7 @@ values only. It is not a general YAML parser.
 """
 
 import argparse
+import json
 from pathlib import Path, PurePosixPath
 import re
 import stat
@@ -20,6 +21,13 @@ FILES = {
     "ownvoice/LICENSE": ROOT / "LICENSE",
     "ownvoice/SKILL.md": SKILL / "SKILL.md",
     "ownvoice/references/voice.md": SKILL / "references" / "voice.md",
+}
+PLUGIN_FILES = {
+    "ownvoice-plugin/LICENSE": ROOT / "LICENSE",
+    "ownvoice-plugin/plugin.json": ROOT / "plugin.json",
+    "ownvoice-plugin/assets/ownvoice.svg": ROOT / "assets" / "ownvoice.svg",
+    "ownvoice-plugin/skills/ownvoice/SKILL.md": SKILL / "SKILL.md",
+    "ownvoice-plugin/skills/ownvoice/references/voice.md": SKILL / "references" / "voice.md",
 }
 
 
@@ -80,7 +88,7 @@ def validate_links(path, text):
 
 
 def validate():
-    for path in FILES.values():
+    for path in set(FILES.values()) | set(PLUGIN_FILES.values()):
         regular_file(path)
     skill_text = (SKILL / "SKILL.md").read_text(encoding="utf-8")
     match = re.match(r"\A---\n(.*?)\n---(?:\n|\Z)", skill_text, re.DOTALL)
@@ -92,21 +100,40 @@ def validate():
     for path in FILES.values():
         if path.suffix == ".md":
             validate_links(path, path.read_text(encoding="utf-8"))
+    manifest = json.loads((ROOT / "plugin.json").read_text(encoding="utf-8"))
+    if manifest.get("$schema") != "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json":
+        raise ValueError("Plugin schema is missing or unsupported")
+    if manifest.get("name") != "ownvoice" or not re.fullmatch(r"\d+\.\d+\.\d+", manifest.get("version", "")):
+        raise ValueError("Plugin must have the ownvoice name and a semantic version")
+    interface = manifest.get("extensions", {}).get("com.openai", {}).get("interface", {})
+    for key in ("displayName", "shortDescription", "longDescription", "developerName", "category"):
+        if not isinstance(interface.get(key), str) or not interface[key].strip():
+            raise ValueError(f"Plugin interface needs {key}")
+    for key in ("composerIcon", "logo"):
+        if interface.get(key) != "./assets/ownvoice.svg":
+            raise ValueError(f"Plugin {key} must point to the packaged icon")
+    marketplace = json.loads((ROOT / ".agents/plugins/marketplace.json").read_text(encoding="utf-8"))
+    entries = marketplace.get("plugins", [])
+    if marketplace.get("name") != "ownvoice-marketplace" or len(entries) != 1:
+        raise ValueError("Marketplace must contain exactly one OwnVoice plugin")
+    entry = entries[0]
+    if entry.get("name") != "ownvoice" or entry.get("source") != {"source": "local", "path": "./"}:
+        raise ValueError("Marketplace entry must point to the plugin at the repository root")
 
 
-def build():
-    output = ROOT / "dist" / "ownvoice.zip"
+def build(filename, files):
+    output = ROOT / "dist" / filename
     if output.parent.is_symlink() or output.is_symlink():
         raise ValueError("Package destination must not be a symlink")
     output.parent.mkdir(exist_ok=True)
     with zipfile.ZipFile(output, "w", compression=zipfile.ZIP_DEFLATED) as archive:
-        for name, path in sorted(FILES.items()):
+        for name, path in sorted(files.items()):
             entry = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
             entry.create_system = 3
             entry.external_attr = (stat.S_IFREG | 0o644) << 16
             entry.compress_type = zipfile.ZIP_DEFLATED
             archive.writestr(entry, path.read_bytes(), compresslevel=9)
-    print(f"Built {output.relative_to(ROOT)} ({len(FILES)} files)")
+    print(f"Built {output.relative_to(ROOT)} ({len(files)} files)")
 
 
 def main():
@@ -116,10 +143,11 @@ def main():
     try:
         validate()
         if args.check:
-            print("OwnVoice skill is valid")
+            print("OwnVoice skill and plugin package are valid")
         else:
-            build()
-    except (OSError, UnicodeError, ValueError) as error:
+            build("ownvoice.zip", FILES)
+            build("ownvoice-plugin.zip", PLUGIN_FILES)
+    except (OSError, UnicodeError, ValueError, TypeError, AttributeError) as error:
         print(f"Error: {error}", file=sys.stderr)
         return 1
     return 0

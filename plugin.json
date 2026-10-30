@@ -1,0 +1,35 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ownvoice",
+  "version": "0.2.0",
+  "description": "Write, rewrite, and reply to emails and messages in your own voice.",
+  "author": {
+    "name": "Prakhar Pandey",
+    "url": "https://github.com/prakhar1605"
+  },
+  "homepage": "https://github.com/prakhar1605/ownvoice-skill",
+  "repository": "https://github.com/prakhar1605/ownvoice-skill",
+  "license": "MIT",
+  "keywords": ["writing", "email", "messages", "hinglish"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "OwnVoice",
+        "shortDescription": "Write in your own voice",
+        "longDescription": "Write, rewrite, and reply to emails and messages with tone suited to the recipient. OwnVoice supports English and Hinglish, can match user-provided writing samples, and preserves facts, uncertainty, and commitments. It prepares drafts and does not send messages.",
+        "developerName": "Prakhar Pandey",
+        "category": "Productivity",
+        "capabilities": [],
+        "websiteURL": "https://github.com/prakhar1605/ownvoice-skill",
+        "defaultPrompt": [
+          "Rewrite my email to sound natural and direct.",
+          "Draft a friendly reply in Hinglish.",
+          "Use my writing samples to match my voice."
+        ],
+        "brandColor": "#2845A1",
+        "composerIcon": "./assets/ownvoice.svg",
+        "logo": "./assets/ownvoice.svg"
+      }
+    }
+  }
+}

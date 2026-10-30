@@ -1,0 +1,20 @@
+{
+  "name": "ownvoice-marketplace",
+  "interface": {
+    "displayName": "OwnVoice"
+  },
+  "plugins": [
+    {
+      "name": "ownvoice",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

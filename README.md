@@ -2,9 +2,10 @@
 
 **Emails and messages that sound like you.**
 
-OwnVoice is an open-source Claude skill for writing from rough notes, improving
-stiff drafts, and replying to messages. It adapts to the recipient and situation,
-supports English and Hinglish, and can use writing samples you choose to provide.
+OwnVoice is an open-source writing skill for Claude, Codex, and ChatGPT. It turns
+rough notes into messages, improves stiff drafts, and helps write replies. It
+adapts to the recipient and situation, supports English and Hinglish, and can
+use writing samples you choose to provide.
 
 > **Before**
 > I hope this message finds you well. I wanted to take a moment to kindly follow
@@ -18,6 +19,8 @@ of care. OwnVoice keeps those differences. It preserves facts, uncertainty, and
 commitments while making the wording easier to read.
 
 ## Install
+
+Choose the option for your app. The shared skill instructions are the same.
 
 ### Claude Code
 
@@ -49,9 +52,70 @@ The archive contains an `ownvoice/` folder with `SKILL.md`, the voice guide, and
 the license. See [Anthropic's custom-skill guide](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills)
 if your interface uses different labels.
 
+### Codex CLI or the ChatGPT desktop app — standalone skill
+
+From the directory where you cloned the repository, run:
+
+```sh
+mkdir -p ~/.agents/skills
+cp -R ownvoice-skill/skills/ownvoice ~/.agents/skills/
+```
+
+If you have not cloned it yet, first run:
+
+```sh
+git clone https://github.com/prakhar1605/ownvoice-skill.git
+```
+
+These are first-install commands for macOS or Linux. If `~/.agents/skills/ownvoice`
+already exists, compare it before replacing local changes. On Windows, copy the
+`skills/ownvoice` folder into `.agents/skills` inside your user directory. Start
+a new Codex chat, then mention `$ownvoice` or select it from the skills menu.
+Codex may also choose the skill automatically for a matching request.
+
+This local skill is for Codex and supported ChatGPT desktop workflows; copying
+it does not install a plugin in ChatGPT web. See [OpenAI's skill guide](https://learn.chatgpt.com/docs/build-skills).
+
+### ChatGPT desktop or Codex — plugin marketplace
+
+On a supported local desktop setup, add this repository as a marketplace:
+
+```sh
+codex plugin marketplace add prakhar1605/ownvoice-skill
+```
+
+Restart the ChatGPT desktop app, open **Plugins**, choose the **OwnVoice**
+marketplace source, and install **OwnVoice**. Start a new chat and select the
+plugin or its skill. Depending on the surface, ChatGPT uses an `@` mention and
+Codex uses a `$` mention. Marketplace availability can vary by app and workspace.
+See [OpenAI's marketplace setup guide](https://developers.openai.com/plugins/build/plugins).
+
+This is a local/repository marketplace, not an installation from the public
+ChatGPT plugin directory. Public directory distribution requires an OpenAI
+submission and review; this repository alone does not make OwnVoice a listed
+public plugin.
+
+### ChatGPT web or mobile — use the instructions today
+
+For a regular ChatGPT conversation, copy the text of
+[SKILL.md](skills/ownvoice/SKILL.md) into your prompt and ask ChatGPT to follow it.
+When you want to match writing samples, also provide the
+[voice guide](skills/ownvoice/references/voice.md). You can add those instructions
+and files to a ChatGPT Project for reuse across its chats. This is a prompt or
+project workflow, rather than an installed plugin.
+
+For a distributable ChatGPT plugin, maintainers can download
+**ownvoice-plugin.zip** from the [latest release](https://github.com/prakhar1605/ownvoice-skill/releases/latest)
+and follow [OpenAI's plugin upload and review process](https://developers.openai.com/plugins/deploy/submission).
+Upload access, verification, and publication depend on the developer account and
+OpenAI's review. The ZIP is a plugin submission package, not the Claude skill ZIP.
+
 ## Use it
 
-In Claude Code, invoke `/ownvoice`. In Claude chat, ask Claude to use OwnVoice.
+In Claude Code, invoke `/ownvoice`. In Codex, use `$ownvoice`. In ChatGPT, select
+the installed plugin or skill with `@` when available, or provide the instructions
+as described above. The examples below use Claude Code syntax: replace `/ownvoice`
+with `$ownvoice` in Codex, or select OwnVoice and use the same request in ChatGPT.
 You can name a mode or simply describe what you need.
 
 | Mode | What you provide | What you get |
@@ -124,9 +188,12 @@ Writing quality is contextual, and the skill makes no AI-detector guarantees.
 skills/ownvoice/
   SKILL.md                 Skill entrypoint
   references/voice.md      Optional voice-matching guidance
+plugin.json                Portable OpenAI plugin manifest
+assets/ownvoice.svg        Plugin icon
+.agents/plugins/           Repository marketplace catalog
 examples.md                Fictional worked examples
 evals/                     Behavioral cases and evaluation notes
-scripts/package_skill.py   Validate and build the upload ZIP
+scripts/package_skill.py   Validate and build both upload ZIPs
 LICENSE                    MIT
 ```
 
@@ -139,10 +206,11 @@ python3 scripts/package_skill.py --check
 python3 scripts/package_skill.py
 ```
 
-The second command creates `dist/ownvoice.zip` using an explicit file allowlist.
-Packaging checks run in GitHub Actions. They verify the package structure, not
-the quality of generated messages. Use the prompts and rubric in [evals](evals/README.md)
-to review behavior after changing the instructions.
+The second command creates `dist/ownvoice.zip` for Claude skill upload and
+`dist/ownvoice-plugin.zip` for OpenAI plugin submission. Both use explicit file
+allowlists. Packaging checks run in GitHub Actions. They verify package
+structure, not the quality of generated messages or OpenAI approval. Use the
+prompts and rubric in [evals](evals/README.md) to review instruction changes.
 
 ## Contribute
 
