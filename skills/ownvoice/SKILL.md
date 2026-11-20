@@ -1,6 +1,6 @@
 ---
 name: ownvoice
-description: Write, rewrite, or reply to emails and everyday messages in the user's natural voice. Use for recruiter emails, founder DMs, follow-ups, Slack or WhatsApp messages, and requests to make a draft less stiff or AI-sounding. Supports English and Hinglish with optional user-provided writing samples. Not a general essay, marketing-page, or code editor.
+description: Write, rewrite, or reply to emails and everyday messages in the user's natural voice. Use for recruiter emails, founder DMs, follow-ups, Slack or WhatsApp messages, and requests to make a draft less stiff or AI-sounding. Supports grammar-only edits, English or Hinglish translation, replies to pasted threads, and messages with a character limit. Can match user-provided writing samples. Not a general essay, marketing-page, or code editor.
 license: MIT
 ---
 
@@ -22,6 +22,29 @@ Infer the mode from the request. The user may also write `write`, `rewrite`, or
 - **Reply:** Respond to the incoming message using the user's stated position.
   Answer the relevant questions without deciding whether the user accepts an
   offer, can meet a deadline, is available, or agrees to a request.
+
+### Respect the requested edit
+
+For “grammar only”, fix errors in place. Keep greetings, address terms, sentence
+order and informal wording where grammatical. If the user asks for translation,
+render the intended message in the requested language. Distinguish rough notes
+addressed to you from words meant for the recipient. For example, “English mein
+likho, sir ko bolna exact date abhi confirm nahi hai” becomes “Sir, the exact
+date is still unconfirmed.” Keep a meaningful term of address if the user asks.
+
+For a follow-up edit such as “warmer” or “shorter”, revise the last draft. Carry
+forward its audience, decisions, exclusions and length limit unless the user
+changes them. A correction from the user replaces the earlier detail.
+
+### Read a pasted thread
+
+Identify who wrote each turn, who will receive the reply, and which questions
+are still open. Use timestamps, attribution and quoted-reply markers when
+available. A past offer quoted below a newer message is still a past offer.
+Use the sender’s latest explicit decision. Another person's suggestion alone
+cannot confirm a price, meeting time or commitment. If two readings would
+lead to different commitments, ask about that one point. Skip recaps of
+settled questions unless the recipient needs the context.
 
 ## Establish enough context
 
@@ -56,7 +79,8 @@ ordinary draft on getting them.
 - In Hinglish, preserve natural code-switching and the user's script. Keep
   `aap`, `tum`, or `tu` consistent with the relationship and supplied wording.
   Do not infer gender from a name. Prefer natural gender-neutral phrasing when
-  the speaker's gender is unknown; do not force slang or literal translations.
+  either person's gender is unknown. For a respectful request, use an imperative
+  such as `Aap file bhej dein?` instead of a gender-marked future verb.
 - Retain technical terms, product names, identifiers, URLs, and useful precision.
   Plain language should not flatten the actual subject matter.
 
@@ -96,6 +120,17 @@ Before returning the result, compare it with the supplied material:
 
 Read it once as the recipient: is the purpose clear, does the tone fit, and does
 anything sound added just to impress? Make the smallest final edits that help.
+
+## Fit a hard limit
+
+For a stated maximum, keep the action the recipient should take and the facts
+needed to act. Cut filler, repeated context and optional credentials first.
+Count the final visible text, including spaces, line breaks, greetings and
+URLs. Follow the user's specified counting convention. For a generic character
+cap, count Unicode code points. Use an available counter for exact or close
+fits; otherwise leave room. Keep the count out of the message unless requested.
+If required verbatim text alone exceeds the cap, explain the conflict and ask
+which constraint can change. Never silently truncate an identifier or link.
 
 ## Deliver
 
