@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "ownvoice",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Write, rewrite, and reply to emails and messages in your own voice.",
   "author": {
     "name": "Prakhar Pandey",
@@ -16,7 +16,7 @@
       "interface": {
         "displayName": "OwnVoice",
         "shortDescription": "Write in your own voice",
-        "longDescription": "Write, rewrite, and reply to emails and messages with tone suited to the recipient. OwnVoice supports English and Hinglish, can match user-provided writing samples, and preserves facts, uncertainty, and commitments. It prepares drafts and does not send messages.",
+        "longDescription": "Write emails, messages, and short posts with plain language and a tone suited to the reader. OwnVoice supports English and Hinglish, can match user-provided writing samples, and preserves facts, uncertainty, and commitments. It prepares drafts and does not send messages.",
         "developerName": "Prakhar Pandey",
         "category": "Productivity",
         "capabilities": [],

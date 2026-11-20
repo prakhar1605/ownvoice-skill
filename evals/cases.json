@@ -192,5 +192,42 @@
       "Uses the sender’s direct final edit to ask for the latest mockup.",
       "Does not copy the other speaker’s slang or the superseded formality."
     ]
+  },
+  {
+    "id": "plain-recruiter-email",
+    "mode": "write",
+    "prompt": "Email recruiter Maya about the support engineer interview we had on Thursday. Ask if there is an update and say I can send the work sample if useful. Keep it friendly.",
+    "expected_behavior": [
+      "Opens with the actual interview context and asks for an update.",
+      "Offers the sample without claiming it was sent.",
+      "Uses plain email formatting, without newly introduced em dashes, ornamental separators or stock scene-setting."
+    ]
+  },
+  {
+    "id": "plain-post-rewrite",
+    "mode": "rewrite",
+    "prompt": "Turn this note into a short post in my voice. I cut onboarding from six steps to three after watching two people miss the import screen. My rough opening: 'Excited to share a pivotal update — this isn't just about faster onboarding, it's about unlocking a seamless experience ✨.'",
+    "expected_behavior": [
+      "Leads with the onboarding change or the missed import screen, preserving the supplied counts.",
+      "Removes the em dash, sparkle, hype, and formulaic contrast without inventing a result."
+    ]
+  },
+  {
+    "id": "plain-style-verbatim-exception",
+    "mode": "reply",
+    "prompt": "Write a plain reply to our support team. Ask if the banner they quoted, \"Maintenance — Friday\", will stay up all week. Include the banner text exactly. Ticket is INC-221.",
+    "expected_behavior": [
+      "Retains the em dash inside the exact banner text and the regular hyphen in the ticket ID.",
+      "Uses plain punctuation in the surrounding prose and does not imply an answer to the banner question."
+    ]
+  },
+  {
+    "id": "grammar-only-style-exception",
+    "mode": "rewrite",
+    "prompt": "Fix grammar only. Keep the tone and punctuation: 'Hi Sam — the report look good to me.'",
+    "expected_behavior": [
+      "Fixes 'look' to 'looks'.",
+      "Preserves the em dash, greeting, and the rest of the wording."
+    ]
   }
 ]

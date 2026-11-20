@@ -18,6 +18,18 @@ A recruiter email, a client apology, and a WhatsApp message need different kinds
 of care. OwnVoice keeps those differences. It preserves facts, uncertainty, and
 commitments while making the wording easier to read.
 
+## What’s new in v2.1
+
+OwnVoice uses everyday wording in emails, chats, and short posts. It skips em
+dashes and decorative symbols in newly written prose, leads with the actual
+point, and cuts stock openings and filler. It honors grammar-only requests
+and preserves punctuation in exact quotes, names, and identifiers.
+
+Pew Research Center observed trends in em dashes and certain words across
+English web pages. Juzek and Ward studied vocabulary in scientific abstracts.
+These are patterns across collections of writing. OwnVoice uses them to
+inform style choices. [Pew Research Center](https://www.pewresearch.org/data-labs/2026/08/20/how-much-of-the-internet-is-written-with-ai/) · [COLING paper](https://aclanthology.org/2025.coling-main.426/)
+
 ## What’s new in v2
 
 - Paste a thread and say which points you want to answer. OwnVoice follows who said what, including older messages quoted below a reply.

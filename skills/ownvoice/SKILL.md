@@ -1,6 +1,6 @@
 ---
 name: ownvoice
-description: Write, rewrite, or reply to emails and everyday messages in the user's natural voice. Use for recruiter emails, founder DMs, follow-ups, Slack or WhatsApp messages, and requests to make a draft less stiff or AI-sounding. Supports grammar-only edits, English or Hinglish translation, replies to pasted threads, and messages with a character limit. Can match user-provided writing samples. Not a general essay, marketing-page, or code editor.
+description: Write, rewrite, or reply to emails, everyday messages, and short posts in the user's natural voice. Use for recruiter emails, founder DMs, follow-ups, Slack or WhatsApp messages, and requests to make a draft less stiff or AI-sounding. Supports grammar-only edits, English or Hinglish translation, replies to pasted threads, and messages with a character limit. Can match user-provided writing samples. Use when a draft sounds robotic, formulaic, or overpolished.
 license: MIT
 ---
 
@@ -84,19 +84,37 @@ ordinary draft on getting them.
 - Retain technical terms, product names, identifiers, URLs, and useful precision.
   Plain language should not flatten the actual subject matter.
 
-## Make the language earn its place
+## Make the language sound like the sender
 
-Start with a relevant point, genuine context, or appropriate acknowledgment.
-Remove boilerplate openings when they add nothing. Replace elaborate phrasing
-with direct verbs, reduce repeated explanations, and make the ask easy to find.
-Use contractions and varied sentence lengths where they fit the person's voice.
+Apply these defaults across channels to prose you write or substantially
+rewrite. Honor explicit style and format requests, grammar-only scope, and
+verbatim text. Keep exact names, quotes, links, code, and identifiers intact.
 
-Look beyond individual words. Fix unnecessary scene-setting, exaggerated praise,
-overexplained requests, symmetrical lists, and closings that repeat the message.
-Avoid turning every draft into the same greeting, two sentences, and sign-off.
-Do not ban punctuation or phrases mechanically: a familiar phrase may be the
-right choice in context. Do not add typos, forced jokes, fake anecdotes, or
-artificial roughness to make the text look human.
+- Skip em dashes (`—`), en dashes (`–`) used as sentence separators, and double
+  hyphens used as dash substitutes. Break the thought into two sentences or
+  connect it in plain words. Keep ordinary hyphens in words and exact strings.
+  Skip decorative arrows (`→`, `➜`), checkmarks (`✓`, `✅`), sparkles (`✨`),
+  and ornamental separators. Use ordinary paragraphs for short messages.
+  Use bullets or emphasis when the format calls for them or they aid reading.
+- Prefer words the sender would say. Replace filler uses of “delve into,”
+  “underscore,” “tapestry,” “pivotal,” “seamlessly,” “leverage,” and “unlock”
+  with the specific action or fact. Keep a word when it has a precise meaning
+  in context. Cut empty framing such as “in today's fast-paced world” or
+  “I wanted to take a moment to reach out” and open on the actual subject.
+- Write the claim directly. Skip manufactured contrasts like “It's not just X,
+  it's Y,” lists padded to three items, canned hooks, exaggerated praise, and
+  closings that restate the opening. Use sentences of the length the thought needs.
+- In an email, make the point and next step easy to find. A DM or chat can be
+  a single short paragraph. In a post, lead with the concrete observation,
+  result, or story in the notes. Let formality and warmth follow the relationship.
+- Use specific details only when supplied or verified for the present task.
+  Keep the sender's level of certainty. Avoid invented enthusiasm, fake
+  anecdotes, inserted typos, and forced slang.
+
+Before returning the draft, silently reread it as the sender. Cut anything
+that sounds like a template and adds no meaning. Check that newly written
+prose follows the punctuation defaults, that it still fits the channel,
+and that the recipient can tell what they need to know or do.
 
 ## Preserve what the message commits to
 
