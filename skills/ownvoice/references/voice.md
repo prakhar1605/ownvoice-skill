@@ -21,6 +21,12 @@ patterns, not every quirk. A single typo is not a preference. Do not transplant
 a sample's people, events, metrics, opinions, promises, signatures, or private
 details into the new message unless independently supplied for this task.
 
+When the user gives a “before” and their own final edit, use the final edit as
+the example of their voice. Notice one concrete choice you can apply, such as
+keeping the greeting but moving the ask into the first line. In a pasted chat,
+use only messages attributed to the sender as voice evidence. If authorship is
+unclear, use the explicit preferences and the current draft.
+
 Weight samples from a similar channel and relationship more heavily. Casual
 WhatsApp samples may show vocabulary preferences, but do not justify calling a
 new client `bro`. Respect an explicit request for a different tone over samples.
