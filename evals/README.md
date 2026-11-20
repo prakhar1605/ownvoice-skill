@@ -40,3 +40,11 @@ The package check in GitHub Actions validates structure and archive contents.
 It does not invoke a language model or validate automatic skill discovery.
 See [the initial review](initial-review.md) for the evidence and limitations of
 the first release.
+
+## Version 2 checks
+
+The seven cases from `thread-quoted-offer` through `sender-edit-evidence` cover
+quoted history, grammar-only edits, translation of instructions mixed with
+message content, two length limits, an impossible limit and sample attribution.
+For character budgets, count only the actual message, including its link and
+punctuation. In the revision case, keep the previous turn’s limit in force.

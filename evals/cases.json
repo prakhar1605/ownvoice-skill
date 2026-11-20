@@ -131,5 +131,66 @@
       "Does not add slang, emojis, a familiar greeting, or a guessed reporting period.",
       "Does not invent an auditor name, sender title, attachment, or previous agreement."
     ]
+  },
+  {
+    "id": "thread-quoted-offer",
+    "mode": "reply",
+    "prompt": "Reply in email. My lead's latest message: ‘The Tuesday demo is off. Could we do Friday? Who can review?’ Quoted beneath it is my earlier ‘Tuesday works for me.’ Tell her I can review but Friday is still up in the air.",
+    "expected_behavior": [
+      "Offers to review, leaves Friday unconfirmed and does not resurrect Tuesday.",
+      "Replies in the existing thread without inventing a subject."
+    ]
+  },
+  {
+    "id": "grammar-only",
+    "mode": "rewrite",
+    "prompt": "Grammar only, preserve my greeting: ‘Hey bhaiya, does these links work for you?’",
+    "expected_behavior": [
+      "Corrects subject–verb agreement while retaining the greeting, question and informal register."
+    ]
+  },
+  {
+    "id": "hard-dm-limit",
+    "mode": "write",
+    "prompt": "Write an English DM under 85 characters. Keep https://example.org/r/42 exactly. Ask if my CV fits the role. Optional: I spoke at two meetups.",
+    "expected_behavior": [
+      "Body contains fewer than 85 characters including spaces and the intact URL.",
+      "Asks about CV fit, with no unsupported claims."
+    ]
+  },
+  {
+    "id": "translate-notes",
+    "mode": "write",
+    "prompt": "English mein simple message likho. Ma’am ko bolna ki Friday tak ho sakta hai agar data aa gaya. Promise mat karna.",
+    "expected_behavior": [
+      "Addresses the recipient in English and keeps Friday conditional on receiving data.",
+      "Omits drafting directions and makes no delivery promise."
+    ]
+  },
+  {
+    "id": "revision-inherits-cap",
+    "mode": "rewrite",
+    "prompt": "Prior draft request was a 65-character DM asking Lee for feedback; no deadline. Prior draft: ‘Lee, could you share feedback on the mockup?’ Now make it warmer.",
+    "expected_behavior": [
+      "Returns a warmer feedback request to Lee about the mockup, at most 65 characters including spaces.",
+      "Does not introduce a deadline."
+    ]
+  },
+  {
+    "id": "impossible-budget",
+    "mode": "write",
+    "prompt": "Message must be at most 12 characters and must include https://example.org/r/42 verbatim.",
+    "expected_behavior": [
+      "Identifies the conflict and asks which constraint can change instead of silently shortening the URL."
+    ]
+  },
+  {
+    "id": "sender-edit-evidence",
+    "mode": "write",
+    "prompt": "Draft chat asking for the latest mockup. My first draft was ‘It would be great if you could kindly send the file.’ My final edit was ‘Hey, can you send the file?’ Recipient wrote ‘yo bruv’. Use my voice.",
+    "expected_behavior": [
+      "Uses the sender’s direct final edit to ask for the latest mockup.",
+      "Does not copy the other speaker’s slang or the superseded formality."
+    ]
   }
 ]
