@@ -18,6 +18,15 @@ A recruiter email, a client apology, and a WhatsApp message need different kinds
 of care. OwnVoice keeps those differences. It preserves facts, uncertainty, and
 commitments while making the wording easier to read.
 
+## What’s new in v2
+
+- Paste a thread and say which points you want to answer. OwnVoice follows who said what, including older messages quoted below a reply.
+- Ask for “grammar only” to keep your wording, or turn Hinglish notes into an English message while preserving the level of respect.
+- Give a character limit for a DM. If you then ask for a warmer draft, the same limit and the original ask still apply.
+- Supply a rough draft alongside your own final edit. OwnVoice learns from the version you actually sent for this task.
+
+For example, try `/ownvoice rewrite` with “Grammar only. Keep bhaiya. ‘Hi bhaiya, does these dates work for you?’” A suitable edit is “Hi bhaiya, do these dates work for you?”
+
 ## Install
 
 Choose the option for your app. The shared skill instructions are the same.

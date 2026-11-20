@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "ownvoice",
-  "version": "0.2.0",
+  "version": "2.0.0",
   "description": "Write, rewrite, and reply to emails and messages in your own voice.",
   "author": {
     "name": "Prakhar Pandey",
@@ -22,8 +22,8 @@
         "capabilities": [],
         "websiteURL": "https://github.com/prakhar1605/ownvoice-skill",
         "defaultPrompt": [
-          "Rewrite my email to sound natural and direct.",
-          "Draft a friendly reply in Hinglish.",
+          "Draft a reply to this email thread using my latest decision.",
+          "Turn my Hinglish notes into a short English DM.",
           "Use my writing samples to match my voice."
         ],
         "brandColor": "#2845A1",
